@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+{{for i in d:}}
+{{s=d[dat]}}
+<h2>{{=d[dat]}}</h2>
+{{for j in s:}}
+{{nam=j[0]+j[1]}}
+Reported By :{{=nam}}
+Comments : {{=j[2]}}<br>
+<br><br><br><br>
+{{pass}}
+{{pass}}

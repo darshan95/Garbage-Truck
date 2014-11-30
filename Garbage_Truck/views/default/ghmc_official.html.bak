@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+<h1>This is the ghmc official page</h1>
+<a href='{{=URL('absence_view')}}'>View absence of workers</a><br><br>
+<a href='{{=URL('request_urgent_view')}}'>View requests for Urgent Garbage Collection</a><br><br>
+<a href='{{=URL('request_reservior_view')}}'>View requests for Garbage Reservior</a><br><br>
+{{=BEAUTIFY(response._vars)}}

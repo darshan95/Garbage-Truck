@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<h1>This is the ghmc official page</h1>
+<div style="background-color:rgba(0,0,0,1.0);padding:15px;margin:10px;float:left;height:auto;border-radius:15px;width:60%;font-size:20px;padding-bottom:0px;" >
+<a style="color:#FFFFFF" href='{{=URL('absence_view')}}'>View absence of workers</a><br><br>
+</div>
+
+
+
+
+<div style="background-color:rgba(0,0,0,1.0);padding:15px;margin:10px;float:left;height:auto;border-radius:15px;width:60%;font-size:20px;padding-bottom:0px;" >
+<a  style="color:#FFFFFF" href='{{=URL('request_urgent_view')}}'>View requests for Urgent Garbage Collection</a><br><br>
+</div>
+
+<div style="background-color:rgba(0,0,0,1.0);padding:15px;margin:10px;float:left;height:auto;border-radius:15px;width:60%;font-size:20px;padding-bottom:0px;" >
+<a  style="color:#FFFFFF" href='{{=URL('request_reservior_view')}}'>View requests for Garbage Reservior</a><br><br>
+</div>
+
+<div style="background-color:rgba(0,0,0,1.0);padding:15px;margin:10px;float:left;height:auto;border-radius:15px;width:60%;font-size:20px;padding-bottom:0px;" >
+<a  style="color:#FFFFFF" href='{{=URL('presence_view')}}'>View Workers ratings</a><br><br>
+</div>
+
+
+
+{{=BEAUTIFY(response._vars)}}

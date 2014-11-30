@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+{{for i in d:}}
+{{s=d[i]}}
+<h2>{{=i}}</h2>
+{{for j in s:}}
+{{nam=j.auth_user.first_name+' '+j.auth_user.last_name}}<br>
+Request By :{{=nam}}<br>
+Comments : {{=j.request_collection.comment1}}<br>
+Location : {{=j.request_collection.location1}}<br>
+{{
+disp=''
+stat = j.request_collection.status
+if stat=='1':
+	disp='Received'
+elif stat=='2':
+	disp='Observed'
+elif stat=='3':
+	disp='Verified'
+elif stat=='4':
+	disp='Processing'
+elif stat=='5':
+	disp='Completed'
+pass}}
+Status : {{=disp}} &nbsp;&nbsp;
+<a href="{{=URL('edit_status',args=[j.request_collection.id])}}">Edit</a>
+<br><br><br>
+{{pass}}
+<br><br><br><br><br><br>
+{{pass}}

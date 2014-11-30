@@ -1,0 +1,128 @@
+timestamp: 2014-09-28T00:37:04.079705
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2014-09-28T00:37:04.203062
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-09-28T00:37:04.303333
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-09-28T00:37:04.414517
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2014-09-28T00:37:04.524096
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-09-28T00:37:04.658597
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2014-09-28T00:39:58.512292
+CREATE TABLE consumer(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    dob TIMESTAMP,
+    gender CHAR(512),
+    occupation CHAR(512),
+    house_no CHAR(512),
+    street CHAR(512),
+    location1 CHAR(512),
+    state1 CHAR(512),
+    pin INTEGER,
+    phone INTEGER
+);
+success!
+timestamp: 2014-09-28T00:42:31.865294
+CREATE TABLE report_present(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    request_on TIMESTAMP,
+    comment1 TEXT,
+    rating CHAR(512),
+    ghmc_no CHAR(512)
+);
+success!
+timestamp: 2014-09-28T00:42:31.973104
+CREATE TABLE report_absent(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    request_on CHAR(512),
+    comment1 TEXT
+);
+success!
+timestamp: 2014-09-28T00:42:32.094640
+CREATE TABLE request_festive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    request_on TIMESTAMP,
+    reason CHAR(512),
+    comment1 TEXT
+);
+success!
+timestamp: 2014-09-28T00:42:32.217468
+CREATE TABLE request_collection(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    request_on TIMESTAMP,
+    comment1 TEXT,
+    street CHAR(512),
+    location1 CHAR(512),
+    state1 CHAR(512),
+    pin INTEGER
+);
+success!
+timestamp: 2014-09-28T00:44:13.117039
+CREATE TABLE gmc_det(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    worker_id INTEGER REFERENCES report_present (id) ON DELETE CASCADE,
+    area CHAR(512),
+    name CHAR(512)
+);
+success!
+timestamp: 2014-09-28T01:01:07.684057
+ALTER TABLE auth_user ADD username CHAR(128);
+timestamp: 2014-09-28T09:53:37.099300
+CREATE TABLE gmc_ward(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    pin INTEGER
+);
+success!
+timestamp: 2014-09-28T11:24:52.945194
+ALTER TABLE request_collection ADD status INTEGER;

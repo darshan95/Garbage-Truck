@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+{{for i in s:}}
+GHMC No. (Worker) : {{i.gmc_det.worker_id}}<br>
+Worker Name :{{i.gmc_det.name}}<br>
+Area : {{i.gmc_det.area}}<br>
+Rating :{{=i.report_present.rating}}
+Comment :{{=i.report_present.comment1}}
+{{s=i.auth_user.id.first_name + i.auth_user.last_name}}
+By:{{=s}}
+<br><br><br><br>
+{{pass}}

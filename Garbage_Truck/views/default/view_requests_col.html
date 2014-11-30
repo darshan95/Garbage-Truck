@@ -1,0 +1,23 @@
+{{extend 'layout.html'}}
+{{for i in s:}}
+<h3>Complaint ID - {{=i.id}}</h3>
+
+<b>DATE:</b>&nbsp;{{=i.request_on}}<br><br>
+{{
+disp=''
+stat=i.status
+if stat==1:
+ disp='Received'
+elif stat==2:
+ disp='Observed'
+elif stat==3:
+ disp='Verified'
+elif stat==4:
+ disp='Processing'
+elif stat==5:
+ disp='Completed'
+pass}}
+<b>STATUS :&nbsp;</b>{{=disp}}<b>
+</b> 
+<br><br><br><br>
+{{pass}}

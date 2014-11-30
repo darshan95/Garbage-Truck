@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+{{for i in d:}}
+{{s=d[i]}}
+<h2>{{=i}}</h2>
+{{for j in s:}}
+{{nam=j[0]+' '+j[1]}}<br>
+Reported By :{{=nam}}<br>
+Reason :{{=j[3]}}<br>
+Comments : {{=j[2]}}<br>
+<br><br><br><br>
+{{pass}}
+{{pass}}
